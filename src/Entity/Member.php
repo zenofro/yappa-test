@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use App\Repository\MemberRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: MemberRepository::class)]
+#[UniqueEntity('membershipNumber')]
 class Member
 {
     #[ORM\Id]
@@ -16,7 +18,7 @@ class Member
     #[ORM\Column]
     private ?\DateTimeImmutable $birthDate = null;
 
-    #[ORM\Column(length: 8)]
+    #[ORM\Column(length: 8, unique: true)]
     private ?string $membershipNumber = null;
 
     public function getId(): ?int
