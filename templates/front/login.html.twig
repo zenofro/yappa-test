@@ -3,20 +3,46 @@
 {% block title %}Login{% endblock %}
 
 {% block body %}
-    <div class="grid grid-cols-3 gap-5">
-        <div>
-            <p class="text-gray-600 text-center">
-                Als lid van 1895 krijg je een mooi geschenk. Je hebt de keuze tussen een pet, een sjaal of een vlag. Vul hier jouw lidnummer en geboortedatum in, en maak je keuze.
-            </p>
+    {{ form_start(form) }}
+        <div class="grid grid-cols-3 gap-5 pb-4">
+            <div class="px-5">
+                <p class="text-gray-600 text-center">
+                    Als lid van 1895 krijg je een mooi geschenk. Je hebt de keuze tussen een pet, een sjaal of een vlag. Vul hier jouw lidnummer en geboortedatum in, en maak je keuze.
+                </p>
+            </div>
+
+            <div class="px-5 border-x">
+                <img src="{{ asset('images/calendar.png') }}" alt="calendar" class="mx-auto w-28 h-28 mb-8">
+
+                <label class="text-center block text-gray-600 mb-2">Geboortedatum</label>
+                <div class="flex items-center justify-center gap-2">
+                    <input type="number" name="{{ field_name(form.day) }}" placeholder="Dag" class="w-20" />
+                    <span>-</span>
+                    <input type="number" name="{{ field_name(form.month) }}" placeholder="Maand" class="w-24" />
+                    <span>-</span>
+                    <input type="number" name="{{ field_name(form.year) }}" placeholder="Jaar" class="w-24" />
+                </div>
+
+                {{ form_errors(form.day) }}
+                {{ form_errors(form.month) }}
+                {{ form_errors(form.year) }}
+            </div>
+
+            <div class="px-5">
+                <img src="{{ asset('images/shirt.png') }}" alt="calendar" class="mx-auto w-28 h-28 mb-8">
+                
+                <label class="text-center block text-gray-600 mb-2">Lidnummer</label>
+                <div class="flex justify-center">
+                    <input type="text" name="{{ field_name(form.membershipNumber) }}" />
+                </div>
+            </div>
         </div>
 
-        <div class="border-x">
-            <img src="{{ asset('images/calendar.png') }}" alt="calendar" class="mx-auto w-28 h-28">
-
-        </div>
-
-        <div>
-            <img src="{{ asset('images/shirt.png') }}" alt="calendar" class="mx-auto w-28 h-28">
-        </div>
-    </div>
+        <button
+            type="submit"
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-red-500 text-white rounded-full px-8 py-2"
+        >
+            Volgende
+        </button>
+    {{ form_end(form) }}
 {% endblock %}

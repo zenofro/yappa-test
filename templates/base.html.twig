@@ -26,10 +26,15 @@
                 <a href="#" class="hover:text-red-500">FR</a>
             </div>
 
-            <main class="bg-white p-8 shadow-lg rounded">
+            <main class="bg-white p-8 shadow-lg rounded relative">
+                {% for message in app.flashes('error') %}
+                    <div class="bg-red-50 p-4 mb-8 rounded">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                
                 {% block body %}{% endblock %}
             </main>
         </div>
-
     </body>
 </html>
