@@ -16,11 +16,11 @@
 
                 <label class="text-center block text-gray-600 mb-2">Geboortedatum</label>
                 <div class="flex items-center justify-center gap-2">
-                    <input type="number" name="{{ field_name(form.day) }}" placeholder="Dag" class="w-20" />
+                    <input type="number" name="{{ field_name(form.day) }}" required min="1" max="31" placeholder="Dag" class="w-20" />
                     <span>-</span>
-                    <input type="number" name="{{ field_name(form.month) }}" placeholder="Maand" class="w-24" />
+                    <input type="number" name="{{ field_name(form.month) }}" required min="1" max="12" placeholder="Maand" class="w-24" />
                     <span>-</span>
-                    <input type="number" name="{{ field_name(form.year) }}" placeholder="Jaar" class="w-24" />
+                    <input type="number" name="{{ field_name(form.year) }}" required min="1975" max="{{ 'now' | date('Y') }}" placeholder="Jaar" class="w-24" />
                 </div>
 
                 {{ form_errors(form.day) }}
@@ -33,7 +33,7 @@
                 
                 <label class="text-center block text-gray-600 mb-2">Lidnummer</label>
                 <div class="flex justify-center">
-                    <input type="text" name="{{ field_name(form.membershipNumber) }}" />
+                    <input type="text" name="{{ field_name(form.membershipNumber) }}" required />
                 </div>
             </div>
         </div>

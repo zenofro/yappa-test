@@ -18,7 +18,7 @@ class MemberController extends AbstractController
     {
         $form = $this->createForm(MemberType::class);
 
-        return $this->render('front/login.html.twig', [
+        return $this->render('front/member.html.twig', [
             'form' => $form
         ]);
     }
@@ -32,7 +32,7 @@ class MemberController extends AbstractController
         $form->handleRequest($request);
 
         if (! $form->isSubmitted() && ! $form->isValid()) {
-            return $this->render('front/login.html.twig', [
+            return $this->render('front/member.html.twig', [
                 'form' => $form
             ]);
         }
