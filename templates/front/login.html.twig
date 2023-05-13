@@ -3,5 +3,20 @@
 {% block title %}Login{% endblock %}
 
 {% block body %}
-    Login
+    <div class="grid grid-cols-3 gap-5">
+        <div>
+            <p class="text-gray-600 text-center">
+                Als lid van 1895 krijg je een mooi geschenk. Je hebt de keuze tussen een pet, een sjaal of een vlag. Vul hier jouw lidnummer en geboortedatum in, en maak je keuze.
+            </p>
+        </div>
+
+        <div class="border-x">
+            <img src="{{ asset('images/calendar.png') }}" alt="calendar" class="mx-auto w-28 h-28">
+
+        </div>
+
+        <div>
+            <img src="{{ asset('images/shirt.png') }}" alt="calendar" class="mx-auto w-28 h-28">
+        </div>
+    </div>
 {% endblock %}
