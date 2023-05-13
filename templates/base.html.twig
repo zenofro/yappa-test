@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -13,7 +13,23 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+
     <body>
-        {% block body %}{% endblock %}
+        <div class="container mx-auto p-20 min-h-screen flex flex-col gap-16 relative">
+            <div class="flex items-center gap-4">
+                <img src="{{ asset('images/logo.webp') }}" alt="logo" class="h-20 w-20">
+                <p class="text-white text-4xl font-semibold">Koninklijke Belgische Voetbalbond</p>
+            </div>
+
+            <div class="absolute top-0 right-0 bg-black text-white p-2 rounded-b flex gap-2">
+                <a href="#" class="text-red-500">NL</a>
+                <a href="#" class="hover:text-red-500">FR</a>
+            </div>
+
+            <main class="bg-white p-8 shadow-lg rounded">
+                {% block body %}{% endblock %}
+            </main>
+        </div>
+
     </body>
 </html>
