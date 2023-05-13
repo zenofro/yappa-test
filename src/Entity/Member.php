@@ -21,6 +21,9 @@ class Member
     #[ORM\Column(length: 8, unique: true)]
     private ?string $membershipNumber = null;
 
+    #[ORM\ManyToOne(inversedBy: 'members')]
+    private ?Article $article = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,6 +49,18 @@ class Member
     public function setMembershipNumber(string $membershipNumber): self
     {
         $this->membershipNumber = $membershipNumber;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }
