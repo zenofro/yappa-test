@@ -1,16 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Kies een artikel{% endblock %}
 
 {% block body %}
-    <div class="grid grid-cols-3 gap-5 pb-4">
-    
-    </div>
-    
-    <button
-        type="submit"
-        class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-red-500 text-white rounded-full px-8 py-2"
-    >
-        Volgende
-    </button>
+    {{ form_start(form) }}
+        <div class="grid grid-cols-4 gap-5 pb-4">
+            {% for article in articles %}
+                <div class="group">
+                    <input
+                        type="radio"
+                        name="{{ field_name(form.articleId) }}"
+                        id="article_{{ article.id }}"
+                        value="{{ article.id }}"
+                        class="sr-only peer"
+                        required
+                    >
+                    
+                    <label for="article_{{ article.id }}" class="cursor-pointer h-full block border border-gray-600 p-4 text-center text-xl font-bold text-gray-600 group-hover:border-red-500 group-hover:text-black peer-checked:border-red-500 peer-checked:text-black">
+                        {{ article.name }}
+                        
+                        <img src="{{ asset(article.image) }}" alt="{{ article.name }}" class="grayscale">
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <button
+            type="submit"
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-red-500 text-white rounded-full px-8 py-2"
+        >
+            Volgende
+        </button>
+    {{ form_end(form) }}
 {% endblock %}

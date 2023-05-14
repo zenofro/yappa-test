@@ -26,7 +26,6 @@ class MemberController extends AbstractController
     #[Route('/', name: 'member.login', methods: ['POST'])]
     public function login(Request $request, MemberRepository $memberRepository): Response
     {
-
         $member = new Member();
         $form = $this->createForm(MemberType::class, $member);
         $form->handleRequest($request);

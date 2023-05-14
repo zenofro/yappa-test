@@ -8,14 +8,9 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class MemberType extends AbstractType
 {
-    public function __construct(
-        public UrlGeneratorInterface $router
-    ){}
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
