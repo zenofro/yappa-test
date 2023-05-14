@@ -16,6 +16,11 @@ class ArticleController extends AbstractController
     #[Route('{id}/producten', name: 'article.index', methods: ['GET'])]
     public function index(Member $member, ArticleRepository $articleRepository): Response
     {
+        if ($member->getArticle()){
+            $this->addFlash('error', 'Je hebt al eerder een artikel gekozen!');
+            return $this->redirect($this->generateUrl('member.index'));
+        }
+
         $articles = $articleRepository->findAll();
 
         $form = $this->createForm(SelectArticleType::class);
@@ -30,6 +35,11 @@ class ArticleController extends AbstractController
     #[Route('{id}/producten', name: 'article.store', methods: ['POST'])]
     public function store(Request $request, Member $member, ArticleRepository $articleRepository, EntityManagerInterface $manager): Response
     {
+        if ($member->getArticle()){
+            $this->addFlash('error', 'Je hebt al eerder een artikel gekozen!');
+            return $this->redirect($this->generateUrl('member.index'));
+        }
+
         $form = $this->createForm(SelectArticleType::class);
         $form->handleRequest($request);
 

@@ -52,6 +52,11 @@ class MemberController extends AbstractController
             return $this->redirect($this->generateUrl('member.index'));
         }
 
+        if ($existingMember->getArticle()){
+            $this->addFlash('error', 'Je hebt al eerder een artikel gekozen!');
+            return $this->redirect($this->generateUrl('member.index'));
+        }
+
         return $this->redirect($this->generateUrl('article.index', ['id' => $existingMember->getId()]));
     }
 }
