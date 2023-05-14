@@ -58,7 +58,7 @@ class ArticleController extends AbstractController
         $form = $this->createForm(SelectArticleType::class);
         $form->handleRequest($request);
 
-        if (! $form->isSubmitted() && ! $form->isValid()) {
+        if (! $form->isSubmitted() || ! $form->isValid()) {
             return $this->redirect($this->generateUrl('article.index'));
         }
 

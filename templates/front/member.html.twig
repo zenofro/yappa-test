@@ -34,6 +34,7 @@
                 <label class="text-center block text-gray-600 mb-2">Lidnummer</label>
                 <div class="flex justify-center">
                     <input type="text" name="{{ field_name(form.membershipNumber) }}" required />
+                    {{ form_errors(form.membershipNumber) }}
                 </div>
             </div>
         </div>
