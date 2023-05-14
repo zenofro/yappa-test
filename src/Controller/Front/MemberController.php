@@ -57,6 +57,8 @@ class MemberController extends AbstractController
             return $this->redirect($this->generateUrl('member.index'));
         }
 
-        return $this->redirect($this->generateUrl('article.index', ['id' => $existingMember->getId()]));
+        $request->getSession()->set('member', $existingMember->getId());
+
+        return $this->redirect($this->generateUrl('article.index'));
     }
 }
