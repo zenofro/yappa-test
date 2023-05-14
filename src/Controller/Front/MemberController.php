@@ -3,7 +3,7 @@
 namespace App\Controller\Front;
 
 use App\Entity\Member;
-use App\Form\MemberType;
+use App\Form\LoginMemberType;
 use App\Repository\MemberRepository;
 use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +16,7 @@ class MemberController extends AbstractController
     #[Route('/', name: 'member.index', methods: ['GET'])]
     public function index(): Response
     {
-        $form = $this->createForm(MemberType::class);
+        $form = $this->createForm(LoginMemberType::class);
 
         return $this->render('front/member.html.twig', [
             'form' => $form
@@ -27,7 +27,7 @@ class MemberController extends AbstractController
     public function login(Request $request, MemberRepository $memberRepository): Response
     {
         $member = new Member();
-        $form = $this->createForm(MemberType::class, $member);
+        $form = $this->createForm(LoginMemberType::class, $member);
         $form->handleRequest($request);
 
         if (! $form->isSubmitted() && ! $form->isValid()) {
